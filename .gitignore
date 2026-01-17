@@ -1,5 +1,8 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+.venv/
+venv/
+eigen-3.4.0/
 .history
 exp/
 *.py[cod]

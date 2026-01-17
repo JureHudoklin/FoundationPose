@@ -45,7 +45,10 @@ except:
 try:
   import mycpp.build.mycpp as mycpp
 except:
-  mycpp = None
+  try:
+    import mycpp
+  except:
+    mycpp = None
 try:
   from bundlesdf.mycuda import common
 except:

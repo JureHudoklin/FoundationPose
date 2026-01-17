@@ -123,6 +123,27 @@ python -m pip install --quiet --no-index --no-cache-dir pytorch3d -f https://dl.
 CMAKE_PREFIX_PATH=$CONDA_PREFIX/lib/python3.9/site-packages/pybind11/share/cmake/pybind11 bash build_all_conda.sh
 ```
 
+# Env setup option 3: uv (recommended for newer GPUs, e.g. RTX 50 series)
+
+This option uses `uv` for faster dependency management and improved compatibility with newer CUDA versions (e.g. CUDA 12.8+).
+
+- Install [uv](https://docs.astral.sh/uv/getting-started/installation/)
+
+- Setup environment
+
+```bash
+# Run the automated setup script
+# This handles:
+# 1. Installing Python dependencies via uv (pinned to Torch 2.7.1)
+# 2. Installing graphics libraries (nvdiffrast, kaolin, pytorch3d)
+# 3. Setting up Eigen3
+# 4. Building C++/CUDA extensions
+bash setup_uv.sh
+
+# Activate the environment
+source .venv/bin/activate
+```
+
 
 # Run model-based demo
 The paths have been set in argparse by default. If you need to change the scene, you can pass the args accordingly. By running on the demo data, you should be able to see the robot manipulating the mustard bottle. Pose estimation is conducted on the first frame, then it automatically switches to tracking mode for the rest of the video. The resulting visualizations will be saved to the `debug_dir` specified in the argparse. (Note the first time running could be slower due to online compilation)
